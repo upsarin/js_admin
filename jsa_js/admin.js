@@ -58,17 +58,19 @@ function getAdmin(){
                     login: login,
                     pass: pass
                 };
-
                 $.ajax({
-                    type: "POST",
-                    url: "/jsa_ajax/admin_auth.php",
-                    dataType: "json",
-                    data: sendInfo,
-                    success: function () {
-                        console.log("success");
-                    }
+                    url: '/jsa_ajax/admin_auth.php',
+                    type: 'post',
+                    dataType: 'json',
+                    success: function(data) {
+                        $(".jsa_admin_form #note").html(data);
+                        setTimeout(function () {
+                            $(".jsa_admin_form").remove();
+                        }, 1000);
+                    },
+                    data: sendInfo
                 });
-                console.log(data);
+
                 return false;
             });
         }

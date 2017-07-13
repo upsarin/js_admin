@@ -1,6 +1,6 @@
 <?php
 
-include dirname(dirname(__FILE__)).'/mail.php';
+include dirname(dirname(__FILE__)) . '/mail.php';
 
 error_reporting (E_ALL ^ E_NOTICE);
 
