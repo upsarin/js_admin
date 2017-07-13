@@ -11,24 +11,34 @@
     <link rel="shortcut icon" href="/original/favicon.ico">
 
     <!-- css -->
-
+    <link href="/jsa_css/jsa_css.css" rel="stylesheet" type="text/css" />
+    <link href="/jsa_css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
 
 
-    <script src="/jsa_js/jquery.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="/jsa_js/bootstrap.min.js" type="text/javascript"></script>
 
 
     <!--jsa-->
-    <link href="/jsa_css/jsa_css.css" rel="stylesheet" type="text/css" />
-    <link href="/jsa_css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
     <script src="/jsa_js/admin.js" type="text/javascript"></script>
 
 </head>
 <body>
+    <div class="container">
 
+        <form class="form-signin" role="form" id="jsa_admin_form" action="/jsa_app/app.jsa">
+            <h2 class="form-signin-heading">Please sign in JSA</h2>
+            <input id="jsa_login" type="login" class="form-control" placeholder="Login" required="" autofocus="" autocomplete="off">
+            <input id="jsa_pass" type="password" class="form-control" placeholder="Password" required=""  autocomplete="off">
+
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in"/>
+        </form>
+
+    </div>
 </body>
 </html>

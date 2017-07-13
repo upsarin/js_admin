@@ -1,3 +1,4 @@
+/*
 function runOnKeys(func) {
     var codes = [].slice.call(arguments, 1);
 
@@ -40,40 +41,67 @@ runOnKeys(
     "M".charCodeAt(0)
 );
 
-function getAdmin(){
+*/
 
-    $.ajax({
-        url: "/jsa_ajax/admin_form.php",
-        type: "POST",
-        success: function(html){
-            $("body").append(html);
-            $(".jsa_close").click(function(){
-                $(".jsa_admin_form").remove();
-            });
-            $(".jsa_admin_form form").submit(function(){
-                var login = $("#jsa_login").val();
-                var pass = $("#jsa_pass").val();
+function explode( delimiter, string ) {	// Split a string by string
+    //
+    // +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: kenneth
+    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
 
-                var sendInfo = {
-                    login: login,
-                    pass: pass
-                };
-                $.ajax({
-                    url: '/jsa_ajax/admin_auth.php',
-                    type: 'post',
-                    dataType: 'json',
-                    success: function(data) {
-                        $(".jsa_admin_form #note").html(data);
-                        setTimeout(function () {
-                            $(".jsa_admin_form").remove();
-                        }, 1000);
-                    },
-                    data: sendInfo
-                });
+    var emptyArray = { 0: '' };
 
-                return false;
-            });
-        }
-    });
+    if ( arguments.length != 2
+        || typeof arguments[0] == 'undefined'
+        || typeof arguments[1] == 'undefined' )
+    {
+        return null;
+    }
 
+    if ( delimiter === ''
+        || delimiter === false
+        || delimiter === null )
+    {
+        return false;
+    }
+
+    if ( typeof delimiter == 'function'
+        || typeof delimiter == 'object'
+        || typeof string == 'function'
+        || typeof string == 'object' )
+    {
+        return emptyArray;
+    }
+
+    if ( delimiter === true ) {
+        delimiter = '1';
+    }
+
+    return string.toString().split ( delimiter.toString() );
 }
+$(document).ready(function(){
+    $(".linkTo a").click(function(){
+        var routes = explode("/", this.href);
+
+        return false;
+    })
+    $("#jsa_admin_form").submit(function(){
+            var login = $("#jsa_login").val();
+            var pass = $("#jsa_pass").val();
+
+            var data = "login=" + login + "&pass=" +pass;
+            $.ajax({
+                url: '/jsa_ajax/admin_auth.php',
+                type: 'post',
+                data: data,
+                success: function(data) {
+                    $("#jsa_admin_form .form-signin-heading").html(data);
+                    setTimeout(function () {
+                        window.location = $("#jsa_admin_form").attr("action");
+                    }, 2000);
+                }
+            });
+
+            return false;
+        });
+})
