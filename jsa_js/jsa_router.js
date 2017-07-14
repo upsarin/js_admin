@@ -49,6 +49,18 @@ $(document).ready(function() {
                 data: routes,
                 success: function(data) {
                     $(".main").html(data);
+                    $("#files").change(function(){
+                        if(this.value != "all") {
+                            $.ajax({
+                                url: '/jsa_ajax/jsa_pages.php',
+                                type: 'post',
+                                data: "page=" + this.value,
+                                success: function (html) {
+                                    $("html").html(html);
+                                }
+                            });
+                        }
+                    });
                 }
             });
         }
@@ -56,5 +68,7 @@ $(document).ready(function() {
         /*
 
          */
-    })
+    });
+
+
 });

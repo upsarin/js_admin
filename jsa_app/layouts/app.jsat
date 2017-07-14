@@ -1,3 +1,13 @@
 <?
-
+    $filelist = glob("../jsa_layout/*.html");
 ?>
+    <select id="files" class="form-control">
+        <option value="all">choose page</option>
+        <? foreach($filelist as $element => $path) { ?>
+            <option value="<?=$path?>"><?=$path?></option>
+        <? } ?>
+    </select>
+    <jsa>
+        hello
+    </jsa>
+
