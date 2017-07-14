@@ -7,7 +7,5 @@
             <option value="<?=$path?>"><?=$path?></option>
         <? } ?>
     </select>
-    <jsa>
-        hello
-    </jsa>
+    <jsa></jsa>
 

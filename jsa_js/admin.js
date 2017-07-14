@@ -80,6 +80,17 @@ function explode( delimiter, string ) {	// Split a string by string
     return string.toString().split ( delimiter.toString() );
 }
 $(document).ready(function(){
+
+    $.ajax({
+        url: '/jsa_ajax/jsa_admin_check.php',
+        type: 'post',
+        success: function(data) {
+            if(data == false){
+                window.location = "/jsa_app/index.jsa";
+            }
+        }
+    });
+
     $(".linkTo a").click(function(){
         var routes = explode("/", this.href);
 

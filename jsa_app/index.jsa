@@ -26,19 +26,32 @@
     <!--jsa-->
 
     <script src="/jsa_js/admin.js" type="text/javascript"></script>
-
+    <script>
+        $.ajax({
+            url: '/jsa_ajax/jsa_admin_check.php',
+            type: 'post',
+            success: function(data) {
+                if(data == true){
+                    window.location = "/jsa_app/app.jsa";
+                }
+            }
+        });
+    </script>
 </head>
 <body>
-    <div class="container">
+<div class="container-fluid">
+    <div class="row">
 
-        <form class="form-signin" role="form" id="jsa_admin_form" action="/jsa_app/app.jsa">
-            <h2 class="form-signin-heading">Please sign in JSA</h2>
-            <input id="jsa_login" type="login" class="form-control" placeholder="Login" required="" autofocus="" autocomplete="off">
-            <input id="jsa_pass" type="password" class="form-control" placeholder="Password" required=""  autocomplete="off">
+        <div class="col-sm-4 col-sm-offset-4 col-md-8 col-md-offset-2 main">
+            <form class="form-signin" role="form" id="jsa_admin_form" action="/jsa_app/app.jsa">
+                <h2 class="form-signin-heading">Please sign in JSA</h2>
+                <input id="jsa_login" type="login" class="form-control" placeholder="Login" required="" autofocus="" autocomplete="off">
+                <input id="jsa_pass" type="password" class="form-control" placeholder="Password" required=""  autocomplete="off">
 
-            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in"/>
-        </form>
-
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in"/>
+            </form>
+        </div>
     </div>
+</div>
 </body>
 </html>

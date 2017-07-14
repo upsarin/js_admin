@@ -51,14 +51,7 @@ $(document).ready(function() {
                     $(".main").html(data);
                     $("#files").change(function(){
                         if(this.value != "all") {
-                            $.ajax({
-                                url: '/jsa_ajax/jsa_pages.php',
-                                type: 'post',
-                                data: "page=" + this.value,
-                                success: function (html) {
-                                    $("html").html(html);
-                                }
-                            });
+                            window.location = this.value + "?action=edit";
                         }
                     });
                 }
